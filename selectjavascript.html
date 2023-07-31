@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<select class="form-select select2 select2-hidden-accessible" name="medio_subir" id="medio_subir" onchange="">
+  <option value="">Selecciona cómo subir el pago</option>
+  <option value="1">Por archivo</option>
+  <option value="2">Por foto</option>
+</select>
+<!-- <input name="input1" type="text" Style="display:none"> -->
+<!-- subir comprobante de pago -->
+<div class="mb-3" style="display: none;" name="input1">
+    <label for="message-text" class="col-form-label">Sube un archivo del pago</label> 
+    <input type="file" name="image" accept="image/*" class="form-control" >
+</div>
+<div class="mb-3" style="display: none;" name="input2">
+    <label for="message-text" class="col-form-label">Toma una foto del pago</label> 
+    <input type="file" name="image" capture="camera" accept="image/*" class="form-control" >
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <button type="submit" class="btn btn-primary" name="bpago">Pagar</button>
+</div>
+<script>
+const medio_subir = document.querySelector("#medio_subir");
+const input1 = document.querySelector("[name=input1]");
+const input2 = document.querySelector("[name=input2]");
+
+medio_subir.addEventListener("change", () => {
+  if (medio_subir.value === "1") {
+    input1.style.display = 'initial';
+    input2.style.display = 'none';
+  } else if(medio_subir.value === "2")  {
+    input2.style.display = 'initial';
+    input1.style.display = 'none';
+  }else{ 
+    input1.style.display = 'none';
+    input2.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
